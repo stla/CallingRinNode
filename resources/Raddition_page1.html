@@ -1,0 +1,38 @@
+<html>
+    <head>
+         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+ 
+        <script type="text/javascript">
+            function sendxy() {
+                $.ajax({
+                url: "/put1",
+                type: "PUT",
+                processData: false,
+                data: JSON.stringify({
+                                        x: Number($("#x").val()), 
+                                        y: Number($("#y").val())
+                                    }),
+                success: function (result) {
+                    alert (result);
+                },
+                error: function(xhr, status, error) {
+                  alert("Error: " + xhr.responseText);
+                },
+                dataType: "text",
+                contentType: "application/json"
+                }); 
+            }
+        </script>
+    </head>
+    <body>
+ 
+        <h3>Enter two numbers:</h3>
+        <input id="x" type="number" value="0"/>
+        <input id="y" type="number" value="0"/>
+ 
+        <br><br>
+        
+        <input id="submit" type="button" value="Addition" onclick="sendxy()">
+ 
+    </body>
+</html>
